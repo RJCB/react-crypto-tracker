@@ -1,0 +1,188 @@
+//header
+.header {
+  display: flex;
+  background-color: transparent;
+  justify-content: space-between;
+  margin: 10px 20px;
+
+  h1 {
+    align-self: center;
+    color: gold;
+    cursor: pointer;
+    font-family: Montserrat;
+    font-weight: bold;
+    font-size: 21px;
+  }
+
+  select {
+    padding: 7px;
+    border: 1px solid #e7c71a;
+    background-color: transparent;
+    color: #e7c71a;
+    border-radius: 4px;
+  }
+}
+
+//banner
+.banner {
+  background-image: url('./assets/banner2.jpeg');
+  height: 400px;
+
+  &__content {
+    color: #fff;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding-top: 40px;
+
+    h2 {
+      font-size: 44px;
+    }
+
+    p {
+      font-size: 14px;
+      padding-top: 15px;
+      font-weight: 300;
+      opacity: 0.8;
+    }
+  }
+
+  //carousel
+  .slick-slider {
+    margin-top: 50px;
+
+    .slick-slide {
+      display: flex;
+      justify-content: center;
+      text-align: center;
+
+      .carousel__item {
+        cursor: pointer;
+
+        img {
+          width: 120px;
+          border-radius: 100%;
+        }
+
+        p {
+          padding-top: 20px;
+          color: gold;
+
+          &.carousel__item-symbol {
+            padding-top: 10px;
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+}
+
+//table
+.market__data {
+  h3 {
+    color: #fff;
+    font-size: 34px;
+    font-weight: 300;
+    margin: 20px;
+    text-align: center;
+  }
+
+  &-table {
+    width: 85%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    text-align: justify;
+
+    thead {
+      background-color: gold;
+
+      th {
+        font-weight: bold;
+        font-size: 14px;
+        color: #000;
+        width: 20%;
+        padding: 15px;
+
+        &:first-child {
+          width: 30%;
+        }
+
+        &:last-child {
+          width: 25%;
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        border-bottom: 1px solid rgb(231, 199, 26, 0.5);
+        color: #fff;
+        cursor: pointer;
+
+        th {
+          padding: 15px;
+          font-weight: 400;
+          display: flex;
+
+          img {
+            width: 50px;
+          }
+
+          div {
+            display: flex;
+            flex-direction: column;
+            align-self: end;
+            margin-left: 15px;
+
+            .symbol {
+              text-transform: uppercase;
+            }
+          }
+        }
+
+        td {
+          padding: 15px;
+
+          .price__percentage {
+            &.negative {
+              color: #d12e2e;
+            }
+
+            &.positive {
+              color: #2cb92c;
+            }
+
+            display: block;
+
+            &::after {
+              content: '%';
+              padding-left: 4px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// spinner
+.spinner {
+  margin: 20px auto;
+  border: 8px solid transparent;
+  border-top: 8px solid gold;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
