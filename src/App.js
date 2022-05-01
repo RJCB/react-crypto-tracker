@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import './_app.scss';
 import Header from './components/Header';
 import { CurrencyProvider } from './context';

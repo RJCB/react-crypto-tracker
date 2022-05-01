@@ -1,10 +1,12 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react'
 import { Line } from 'react-chartjs-2';
+// eslint-disable-next-line
 import Chart from 'chart.js/auto';//required--don't remove
 import { getChartData } from '../config';
 import { CurrencyContext } from '../context';
 import Spinner from './Spinner';
+import Error from './Error';
 // import formatUnixToRealTime from '../helpers/formatTime';
 
 const CoinChart = ({ coinId }) => {
@@ -12,6 +14,7 @@ const CoinChart = ({ coinId }) => {
     const [currency] = useContext(CurrencyContext);
     const [chartData, setChartData] = useState([]);
     const [period, setPeriod] = useState(1);
+    const [error, setError] = useState(false);
     const chartDays = [
         {
             label: "24 Hours",
@@ -31,10 +34,12 @@ const CoinChart = ({ coinId }) => {
     useEffect(() => {
         const fetchChartData = async () => {
             try {
+                setError(false);
                 setLoading(true);
                 const response = await axios.get(getChartData(coinId, currency, period));
                 setChartData(response.data.prices);
             } catch (error) {
+                setError(true);
                 console.log(error);
             }
             setLoading(false);
@@ -83,6 +88,8 @@ const CoinChart = ({ coinId }) => {
                     </div>
                 </div>
             }
+
+            {error && <Error />}
         </>
     )
 }

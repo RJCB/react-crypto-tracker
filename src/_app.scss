@@ -89,6 +89,21 @@
     text-align: center;
   }
 
+  &-input {
+    width: 85%;
+    margin: 20px auto;
+    display: block;
+    line-height: normal;
+    padding: 12px;
+    background-color: transparent;
+    border: 1px solid #e7c71a;
+    border-radius: 2px;
+    caret-color: #e7c71a;
+    color: #fff;
+    outline: none;
+    font-size: 14px;
+  }
+
   &-table {
     width: 85%;
     margin: 0 auto;
@@ -277,4 +292,11 @@
       }
     }
   }
+}
+
+.error-content {
+  color: #fff;
+  font-size: 24px;
+  text-align: center;
+  margin: 20px auto;
 }

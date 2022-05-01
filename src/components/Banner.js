@@ -1,17 +1,19 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { getTrendingCoins } from '../config';
 import axios from 'axios';
 import Spinner from './Spinner';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import Error from './Error';
 const Banner = () => {
     const [trendingList, setTrendingList] = useState([]);
     const [loading, setLoading] = useState(false);
-    const history = useNavigate();
+    const [error, setError] = useState(false);
     const fetchTrending = async () => {
         try {
+            setError(false);
             setLoading(true);
             const response = await axios.get(getTrendingCoins);
             let res = [];
@@ -20,6 +22,7 @@ const Banner = () => {
             })
             setTrendingList(res);
         } catch (error) {
+            setError(true);
             console.log(error);
         }
         setLoading(false);
@@ -63,6 +66,7 @@ const Banner = () => {
                         {carouselElements}
                     </Slider>
                 }
+                {error && <Error />}
             </div>
         </div>
     )

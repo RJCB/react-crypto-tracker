@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import CoinChart from '../components/CoinChart';
+import Error from '../components/Error';
 import Spinner from '../components/Spinner';
 import { getCoinData } from '../config';
 import { CurrencyContext } from '../context';
@@ -22,10 +23,12 @@ const CoinPage = () => {
     const [currency] = useContext(CurrencyContext);
     const { id } = useParams();
     const [showMore, setShowMore] = useState(false);
+    const [error, setError] = useState(false);
 
     useEffect(() => {
         const fetchCoinData = async () => {
             try {
+                setError(false);
                 setLoading(true);
                 const response = await axios.get(getCoinData(id));
                 const data = response.data;
@@ -43,6 +46,7 @@ const CoinPage = () => {
                     }
                 })
             } catch (error) {
+                setError(true);
                 console.log(error);
             }
             setLoading(false);
@@ -64,6 +68,8 @@ const CoinPage = () => {
                     <p><span className="bold">Market Price:</span>{formatCurrency(coinData.marketCap)}</p>
                 </div>
             }
+
+            {error && <Error />}
 
             <div className="coinpage__chart">
                 <CoinChart coinId={id} />
