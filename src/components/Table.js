@@ -40,7 +40,7 @@ const Table = () => {
         setInput(e);
         setInputBasedList(inputBasedList);
     }
-    const test = (input) => {
+    const tableData = (input) => {
         const rowElements = (!input ? coinsList : inputBasedList).map(({ id, image, name, market_cap, symbol, current_price, price_change_percentage_24h, price_change_24h
         }) => {
             return (<tr key={id} onClick={() => handleCoinClick(id)}>
@@ -71,7 +71,7 @@ const Table = () => {
                         <th scope="col">Market Cap</th>
                     </tr>
                 </thead>
-                {!loading && <tbody>{test(input)}</tbody>}
+                {!loading && <tbody>{tableData(input)}</tbody>}
             </table>
             {loading && <Spinner />}
             {error && <Error />}
