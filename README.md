@@ -13,6 +13,10 @@ This app provides a list of crypto tokens and their current prices,market volume
 ## API
 - All Crypto information is being fetched from <a href="https://www.coingecko.com/en/api/documentation">`coingecko`</a>
 
+## Potential Todo's:
+- Add pagination
+- Maybe firebase authentication to log into the app
+
 ## Screenshots
 ![Screen Shot 2022-05-01 at 1 15 58 PM](https://user-images.githubusercontent.com/37097058/166157208-aef97bd0-cff5-4f96-b59e-b4765d7a3e02.png)
 ![Screen Shot 2022-05-01 at 1 16 13 PM](https://user-images.githubusercontent.com/37097058/166157220-f7879c39-5676-48d5-bea3-1ceb88f36983.png)
