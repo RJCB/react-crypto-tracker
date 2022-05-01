@@ -3,7 +3,7 @@
   display: flex;
   background-color: transparent;
   justify-content: space-between;
-  margin: 10px 20px;
+  margin: 10px 40px;
 
   h1 {
     align-self: center;
@@ -58,6 +58,7 @@
 
       .carousel__item {
         cursor: pointer;
+        text-decoration: none;
 
         img {
           width: 120px;
@@ -184,5 +185,96 @@
 
   100% {
     transform: rotate(360deg);
+  }
+}
+
+//coinpage
+.coinpage {
+  max-width: 85%;
+  margin: 40px auto;
+
+  .coinpage__content {
+    display: flex;
+    color: #fff;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+
+    img {
+      width: 200px;
+      animation: imageAnimation 3s alternate-reverse infinite;
+    }
+
+    @keyframes imageAnimation {
+      0% {
+        transform: scaleX(-1);
+      }
+
+      100% {
+        transform: scaleX(1)
+      }
+    }
+
+    h2 {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      font-size: 32px;
+    }
+
+    P {
+      font-weight: 300;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      text-align: justify;
+      letter-spacing: 0.5px;
+
+      a {
+        text-decoration: underline;
+        color: inherit;
+      }
+
+      button {
+        border: none;
+        text-decoration: underline;
+        background: transparent;
+        color: #e7c71a;
+
+        &::before {
+          content: '';
+          margin-left: 5px;
+        }
+      }
+
+      .bold {
+        font-weight: bold;
+
+        &::after {
+          content: '';
+          margin-right: 4px;
+        }
+      }
+    }
+  }
+
+  .chart__buttons-wrapper {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+
+    button {
+      border: none;
+      background-color: #e7c71a;
+      padding: 8px 10px;
+      border-radius: 2px;
+      cursor: pointer;
+
+      &:disabled {
+        cursor: default;
+      }
+
+      &:not(:last-child) {
+        margin-right: 20px;
+      }
+    }
   }
 }

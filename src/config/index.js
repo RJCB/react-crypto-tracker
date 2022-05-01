@@ -8,6 +8,6 @@ export const getCoinData = (coinId) => {
     return `https://api.coingecko.com/api/v3/coins/${coinId}?localization=false&market_data=true`
 }
 
-export const getChartData = () => {
-    return ``;
+export const getChartData = (coinId, currency, days) => {
+    return `https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=${currency}&days=${days}`;
 }

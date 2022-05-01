@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
+import CoinChart from '../components/CoinChart';
+import Spinner from '../components/Spinner';
 import { getCoinData } from '../config';
 import { CurrencyContext } from '../context';
 import formatCurrency from '../helpers/currencyFormatter';
@@ -46,18 +48,26 @@ const CoinPage = () => {
             setLoading(false);
         }
         fetchCoinData();
-    }, [id, currency])
+    }, [id, currency]);
 
     const description = !showMore ? coinData.description.slice(0, 250) : coinData.description;
 
     return (
-        <div>
-            <img src={coinData.image.large} alt="" />
-            <h2>{coinData.name}</h2>
-            <p>{description}<button onClick={() => setShowMore(prevState => !prevState)}>{showMore ? "Show less" : "Show more"}</button></p>
-            <p><span className="bold">Rank:</span>{coinData.rank}</p>
-            <p><span className="bold">Current Price:</span>{formatCurrency(coinData.currentPrice)}</p>
-            <p><span className="bold">Market Price:</span>{formatCurrency(coinData.marketCap)}</p>
+        <div className="coinpage">
+            {loading ? <Spinner /> :
+                <div className="coinpage__content">
+                    <img src={coinData.image.large} alt="" />
+                    <h2>{coinData.name}</h2>
+                    <p><span dangerouslySetInnerHTML={{ __html: description }} />{coinData.description.length > 250 && <button onClick={() => setShowMore(prevState => !prevState)}>{showMore ? "show less" : "..show more"}</button>}</p>
+                    <p><span className="bold">Rank:</span>{coinData.rank}</p>
+                    <p><span className="bold">Current Price:</span>{formatCurrency(coinData.currentPrice)}</p>
+                    <p><span className="bold">Market Price:</span>{formatCurrency(coinData.marketCap)}</p>
+                </div>
+            }
+
+            <div className="coinpage__chart">
+                <CoinChart coinId={id} />
+            </div>
         </div>
     )
 }

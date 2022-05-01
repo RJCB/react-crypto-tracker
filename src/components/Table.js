@@ -16,7 +16,6 @@ const Table = () => {
             try {
                 setLoading(true);
                 const response = await axios.get(getCoinsList(currency));
-                console.log(response);
                 setCoinsList(response.data);
             } catch (error) {
                 console.log(error);

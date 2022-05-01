@@ -4,13 +4,12 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { getTrendingCoins } from '../config';
 import axios from 'axios';
-import { CurrencyContext } from '../context';
-import Logo from "../assets/logo192.png";
 import Spinner from './Spinner';
+import { Link, useNavigate } from 'react-router-dom';
 const Banner = () => {
     const [trendingList, setTrendingList] = useState([]);
     const [loading, setLoading] = useState(false);
-    // const [currency] = useContext(CurrencyContext);
+    const history = useNavigate();
     const fetchTrending = async () => {
         try {
             setLoading(true);
@@ -29,19 +28,20 @@ const Banner = () => {
         fetchTrending();
     }, [])
 
-    const carouselElements = trendingList.map((item) => {
-        return (<div className="carousel__item" key={item.id}>
-            <img src={item.large} alt={item.name} />
-            <p className="carousel__item-name">{item.name}</p>
-            <p className="carousel__item-symbol">{item.symbol}</p>
-        </div>)
+    const carouselElements = trendingList.map(({ id, large, name, symbol }) => {
+        return (<Link to={`/coins/${id}`} className="carousel__item" key={id}>
+            <img src={large} alt={name} />
+            <p className="carousel__item-name">{name}</p>
+            <p className="carousel__item-symbol">{symbol}</p>
+        </Link>)
     })
 
     let sliderSettings = {
         dots: true,
         infinite: true,
         speed: 1000,
-        autoplay: false,
+        autoplay: true,
+        touchMove: true,
         pauseOnHover: true,
         slidesToShow: 4,
         useCSS: true,
