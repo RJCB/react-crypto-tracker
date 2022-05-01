@@ -36,7 +36,12 @@ const Table = () => {
     }
 
     const handleInputChange = (e) => {
-        const inputBasedList = coinsList.filter(coin => (coin.symbol).includes(e));
+        const inputBasedList = coinsList.filter(coin => {
+            const symbol = (coin.symbol).toLowerCase();
+            const name = (coin.name).toLowerCase();
+            const value = e.toLowerCase()
+            return symbol.includes(value) || name.includes(value);
+        })
         setInput(e);
         setInputBasedList(inputBasedList);
     }
