@@ -3,7 +3,7 @@ App can be accessed at https://rjcb.github.io/react-crypto-tracker/
 
 This app provides a list of crypto tokens and their current prices,market volume, recent price changes. User can also view the price change chart for the last 24hrs to 1 year.
 
-## Dependency Packages:
+## Dependency NPM packages:
 - `react-slick` for carousel
 - `react-chartjs-2` for token price change chart
 - `react-number-format` for formatting price numbers
@@ -11,7 +11,7 @@ This app provides a list of crypto tokens and their current prices,market volume
 - `axios` for fetching information from endpoint
 
 ## API
-- All Crypto information is being fetched from `coingecko`
+- All Crypto information is being fetched from <a href="https://www.coingecko.com/en/api/documentation">`coingecko`</a>
 
 ## Screenshots
 ![Screen Shot 2022-05-01 at 1 15 58 PM](https://user-images.githubusercontent.com/37097058/166157208-aef97bd0-cff5-4f96-b59e-b4765d7a3e02.png)
